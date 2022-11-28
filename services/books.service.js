@@ -47,9 +47,11 @@ class BooksServices {
             const idBook = this.books.findIndex(bk => bk.id === parseInt(id))
             if (idBook === -1) {
                 throw new Error('Book  not found')
+            }else{
+                this.books[idBook] = change;
             }
 
-            this.books[idBook] = change;
+            
 
             return {
                 message: "updated",
