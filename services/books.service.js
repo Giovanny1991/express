@@ -22,6 +22,7 @@ class BooksServices {
     fin() {
         return this.books;
     }
+
     finOne(id) {
 
         const newbooks = this.books.find(bk => bk.id === parseInt(id));
@@ -62,6 +63,23 @@ class BooksServices {
 
     delete(id) {
 
+        try {
+
+            const idBook = this.books.findIndex(bk => bk.id === parseInt(id))
+            if (idBook === -1) {
+                throw new Error('Book  not found')
+            }
+
+            this.books.splice(idBook,1)
+
+            return {
+                message: 'deleted index:' + idBook +",  id:"+id,// mostramos el index y el id que fue eliminado
+                data: this.books
+            }
+
+        } catch (error) {
+            console.log.error('Book  not found');
+        }
 
     }
 }

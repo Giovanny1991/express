@@ -36,4 +36,13 @@ route.put('/:id', (req, res) => {
 
 });
 
+route.delete('/:id', (req, res) => {
+
+    const { id } = req.params;
+    const deleteBook = service.delete(id);
+
+    res.json(deleteBook);
+
+});
+
 module.exports = route;
